@@ -1,0 +1,70 @@
+.sa-sec-panel{
+    height: auto;
+    transition: height .28s ease;
+}
+
+/* маленькая кнопка в стиле сайта */
+.sa-sec-toggle{
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,.12);
+    background: rgba(255,255,255,.18);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--text);
+    opacity: .85;
+}
+
+.sa-sec-toggle:hover{
+    opacity: 1;
+    border-color: rgba(0,0,0,.22);
+}
+
+.sa-sec-toggle__icon{
+    width: 16px;
+    height: 16px;
+    position: relative;
+}
+
+.sa-sec-toggle__icon::before,
+.sa-sec-toggle__icon::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 14px;
+    height: 1px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+}
+
+.sa-sec-toggle__icon::after{
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* когда открыто — показываем минус */
+.sa-sec-toggle[aria-expanded="true"] .sa-sec-toggle__icon::after{
+    display: none;
+}
+
+/* row для позиционирования внутри секции */
+.home-about__section-toggle-row{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+/* скрытый текст (если нет в проекте) */
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}

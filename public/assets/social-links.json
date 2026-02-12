@@ -1,0 +1,17 @@
+[
+    {
+        "label": "Instagram",
+        "url": "https://instagram.com/...",
+        "icon": "instagram.svg"
+    },
+    {
+        "label": "Whatsapp",
+        "url": "https://whatsapp.com/...",
+        "icon": "whatsapp.svg"
+    },
+    {
+        "label": "Phone",
+        "url": "#",
+        "icon": "phone.svg"
+    }
+]

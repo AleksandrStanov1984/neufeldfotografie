@@ -1,0 +1,44 @@
+html, body {
+    background: var(--bg);
+    color: var(--text);
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+main {
+    flex: 1;
+    position: relative;
+}
+
+.container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+.section {
+    padding: var(--section-lg) 0;
+}
+
+.prose {
+    max-width: 760px;
+}
+
+h1,h2,h3,.is-title{
+    font-family: "Cinzel", serif;
+}
+
+
+@media (max-width: 1024px) {
+    .section { padding: var(--section-md) 0; }
+}
+@media (max-width: 768px) {
+    .section { padding: var(--section-sm) 0; }
+}
+

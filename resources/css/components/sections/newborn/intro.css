@@ -1,0 +1,135 @@
+/* ===============================
+   NEWBORN INTRO (layout like screenshot)
+================================ */
+
+.newborn-intro{
+    background: #f7f3ee;
+    padding: 78px 0 90px;
+}
+
+.newborn-intro__inner{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 40px;
+
+    display: grid;
+
+    /* 3 колонки как в референсе: левый блок / узкий центр / правый блок */
+    grid-template-columns: 260px 520px 260px;
+
+    /* 2 ряда: верхняя строка и основная */
+    grid-template-rows: auto 1fr;
+
+    column-gap: 80px;
+    row-gap: 10px;
+
+    /* важно: чтобы tagline можно было прижать вниз */
+    min-height: 260px;
+}
+
+/* LEFT TOP: kicker */
+.newborn-intro__left{
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+}
+
+.newborn-intro__kicker{
+    margin: 0;
+    font-family: var(--font-title);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 16px;
+    color: rgba(30,25,20,0.78);
+}
+
+/* CENTER TOP: lead */
+.newborn-intro__center{
+    grid-column: 2;
+    grid-row: 1 / span 2; /* центр занимает оба ряда */
+    text-align: center;
+}
+
+.newborn-intro__lead{
+    margin: 0 0 18px 0;
+    font-family: var(--font-base);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba(30,25,20,0.70);
+}
+
+/* CENTER: text */
+.newborn-intro__text{
+    font-family: var(--font-base);
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.85;
+    color: rgba(30,25,20,0.62);
+}
+
+.newborn-intro__text p{
+    margin: 0 0 12px;
+}
+.newborn-intro__text p:last-child{
+    margin-bottom: 0;
+}
+
+/* RIGHT BOTTOM: tagline */
+.newborn-intro__right{
+    grid-column: 3;
+    grid-row: 2;
+    align-self: end;            /* прижать вниз */
+    justify-self: end;          /* вправо */
+}
+
+.newborn-intro__tagline{
+    margin: 0;
+    font-family: var(--font-title);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 20px;
+    color: rgba(30,25,20,0.78);
+    text-align: right;
+}
+
+/* MOBILE */
+@media (max-width: 900px){
+    .newborn-intro{
+        padding: 54px 0 58px;
+    }
+
+    .newborn-intro__inner{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        row-gap: 26px;
+        padding: 0 20px;
+        min-height: auto;
+    }
+
+    .newborn-intro__left{
+        grid-column: 1;
+        grid-row: 1;
+        text-align: center;
+    }
+
+    .newborn-intro__center{
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .newborn-intro__right{
+        grid-column: 1;
+        grid-row: 3;
+        justify-self: center;
+        align-self: start;
+    }
+
+    .newborn-intro__tagline{
+        text-align: center;
+        font-size: 18px;
+    }
+}

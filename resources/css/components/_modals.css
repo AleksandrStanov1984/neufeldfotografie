@@ -1,0 +1,82 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 1000;
+}
+.modal.is-open { display: block; }
+
+.modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.28);
+}
+
+/* pretty modal (в стиле сайта) */
+.modal--pretty .modal__panel {
+    max-width: 860px;
+    margin: 7vh auto;
+    background: var(--bg, #f6f3ef); /* если есть переменная — будет она */
+    border-radius: 22px;
+    box-shadow: var(--shadow, 0 18px 60px rgba(0,0,0,.18));
+    border: 1px solid rgba(0,0,0,.06);
+    position: relative;
+
+    max-height: 86vh;
+    overflow: hidden; /* скролл будет внутри body */
+}
+
+.modal--pretty .modal__close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,.12);
+    background: rgba(255,255,255,.55);
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.modal--pretty .modal__content {
+    padding: 46px 38px 34px;
+}
+
+.modal--pretty .modal__kicker {
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: .7;
+    margin-bottom: 10px;
+}
+
+.modal--pretty .modal__title {
+    font-size: clamp(26px, 3vw, 40px);
+    letter-spacing: .08em;
+    margin: 0 0 10px;
+}
+
+.modal--pretty .modal__line {
+    height: 1px;
+    background: rgba(0,0,0,.12);
+    margin: 14px 0 18px;
+}
+
+.modal--pretty .modal__body {
+    max-height: calc(86vh - 160px);
+    overflow: auto;
+    padding-right: 6px;
+}
+
+.modal--pretty .modal__list {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.7;
+}
+
+/* lock body scroll when modal open */
+body.is-modal-open {
+    overflow: hidden;
+}

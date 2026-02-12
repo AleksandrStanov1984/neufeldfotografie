@@ -1,0 +1,185 @@
+.contact-panel__container{
+    display: grid;
+    gap: 28px;
+}
+
+.contact-panel__header{
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+/* аккуратная линия под заголовком */
+.contact-panel__header::after{
+    content: "";
+    display: block;
+    width: 140px;
+    height: 1px;
+    background: rgba(0,0,0,.25);
+    margin: 28px auto 0;
+}
+
+.contact-panel__kicker{
+    font-size: 13px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    opacity: .65;
+    margin-bottom: 16px;
+}
+
+.contact-panel__title{
+    margin: 0;
+    font-size: 42px;
+    line-height: 1.2;
+    text-transform: uppercase;       /* КАПС */
+    letter-spacing: .14em;           /* Воздух между буквами */
+    font-weight: 400;                /* Тонкий */
+}
+
+.contact-panel__grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    align-items: stretch;
+}
+
+/* LEFT CARD */
+.contact-panel__card{
+    border-radius: 18px;
+    border: 1px solid rgba(0,0,0,.10);
+    background: rgba(255,255,255,.20);
+    backdrop-filter: blur(4px);
+    padding: 22px;
+    display: grid;
+    gap: 18px;
+}
+
+.contact-panel__card-title{
+    font-size: 12px;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    opacity: .75;
+    margin-bottom: 6px;
+}
+
+.contact-panel__card-value{
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.contact-panel__divider{
+    height: 1px;
+    width: 100%;
+    background: rgba(0,0,0,.10);
+}
+
+/* LINKS */
+.contact-panel__links{
+    display: grid;
+    gap: 12px;
+}
+
+.contact-panel__link{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,.10);
+    background: transparent;
+    transition: transform .18s ease, border-color .18s ease;
+    color: var(--text);
+}
+
+.contact-panel__link:visited{
+    color: var(--text);
+}
+
+.contact-panel__link:hover{
+    transform: translateY(-2px);
+    border-color: rgba(0,0,0,.22);
+    color: var(--text);
+    text-decoration: none;
+}
+
+.contact-panel__icon{
+    width: 54px;     /* БОЛЬШЕ */
+    height: 54px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(0,0,0,.12);
+    background: rgba(255,255,255,.35);
+}
+
+.contact-panel__icon img{
+    width: 26px;     /* БОЛЬШЕ */
+    height: 26px;
+    display: block;
+}
+
+.contact-panel__label{
+    font-size: 16px;
+    opacity: .92;
+}
+
+/* TEXT */
+.contact-panel__text{
+    font-size: 16px;
+    line-height: 1.75;
+    opacity: .92;
+}
+
+.contact-panel__text p{
+    margin: 0 0 12px;
+}
+
+/* MAP */
+.contact-panel__map{
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.10);
+    background: rgba(255,255,255,.18);
+    min-height: 420px;          /* <-- важно, чтобы не было “узкой колонки” */
+}
+
+.contact-panel__map iframe{
+    width: 100%;
+    height: 100%;
+    min-height: 520px;          /* <-- карта реально большая */
+    border: 0;
+    display: block;
+}
+
+/* DESKTOP: panel + map */
+@media (min-width: 1024px){
+    .contact-panel__grid{
+        grid-template-columns: 420px 1fr; /* слева панель, справа карта */
+        gap: 22px;
+    }
+    .contact-panel__map{
+        min-height: 560px;
+    }
+}
+
+/* BIG DESKTOP: шире карта */
+@media (min-width: 1280px){
+    .contact-panel__grid{
+        grid-template-columns: 460px 1fr;
+    }
+    .contact-panel__map{
+        min-height: 620px;
+    }
+    .contact-panel__title{
+        font-size: 44px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px){
+    .contact-panel__title{ font-size: 30px; }
+    .contact-panel__icon{ width: 48px; height: 48px; }
+    .contact-panel__icon img{ width: 22px; height: 22px; }
+    .contact-panel__map iframe{ min-height: 360px; }
+}

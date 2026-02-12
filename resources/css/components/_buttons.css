@@ -1,0 +1,78 @@
+.btn {
+    height: var(--btn-h);
+    padding: 0 var(--btn-pad-x);
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background .25s, transform .15s;
+}
+
+.btn:hover {
+    background: rgba(0,0,0,.04);
+    transform: translateY(-1px);
+}
+
+.btn--primary {
+    background: var(--text);
+    color: #fff;
+    border-color: var(--text);
+}
+
+.btn--primary:hover {
+    background: #000;
+}
+
+.btn--outline{
+    background: transparent;
+    border: 1px solid rgba(0,0,0,.14);
+}
+.btn--outline:hover{
+    background: rgba(255,255,255,.45);
+}
+
+.price-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 28px;
+    border-radius: 999px;
+
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    color: var(--text-color);
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.price-card__btn:hover {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.45);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+
+.price-card__btn:active {
+    transform: translateY(0);
+}
+
+
+

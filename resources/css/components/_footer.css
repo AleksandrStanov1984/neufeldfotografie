@@ -1,0 +1,328 @@
+.site-footer{
+    width:100%;
+    background:#f6f5f3;
+    color:#817a73;
+    position:relative;
+    border-top:1px solid rgba(0,0,0,.25);
+}
+
+/* inner контейнеры */
+.footer-top__inner,
+.footer-social-row__inner,
+.footer-gallery-wrap,
+.footer-bottom__inner{
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 24px;
+}
+
+.footer-menu .is-disabled { pointer-events:none; opacity:.6; }
+
+/* TOP */
+.footer-top{
+    padding:0;
+    border-bottom:2px solid rgba(0,0,0,.45);
+}
+
+.footer-top__inner{
+    /* важное: layout всегда одинаковый */
+    display:grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items:stretch;
+
+    /* ✅ компактнее как в оригинале */
+    padding: clamp(12px, 2.2vw, 18px) 24px clamp(10px, 1.8vw, 14px);
+    column-gap: clamp(14px, 3.2vw, 40px);
+}
+
+/* LEFT */
+.footer-left{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    /* ✅ было слишком высоко */
+    min-height: clamp(78px, 10vw, 110px);
+}
+
+.footer-seo{
+    min-width:0;
+    max-width:560px;
+    text-align:center;
+
+    /* ✅ меньше и ближе к оригиналу */
+    font-size: clamp(8px, .75vw, 11px);
+    line-height:1.55;
+    opacity:.9;
+    overflow-wrap:anywhere;
+}
+
+/* divider */
+.footer-divider{
+    width:1px;
+    background:rgba(0,0,0,.35); /* ✅ чуть мягче */
+    justify-self:center;
+    margin:6px 0;
+}
+
+/* RIGHT */
+.footer-right{
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-start;
+    padding-left:12px;
+}
+
+/* MENU */
+.footer-menu{
+    display:grid;
+    grid-template-columns: max-content max-content; /* ✅ 2 колонки */
+
+    font-style:italic;
+    letter-spacing:.2px;
+    line-height:1.1;
+
+    /* ✅ было слишком крупно (16..24). делаем как в оригинале */
+    font-size: clamp(12px, 1.05vw, 18px);
+
+    /* ✅ чуть компактнее */
+    row-gap: clamp(8px, 1.4vw, 14px);
+    column-gap: clamp(18px, 3.2vw, 44px);
+}
+
+/* ✅ скрываем пустые спейсеры, чтобы не занимали ячейки grid */
+.footer-menu > span[aria-hidden="true"]{
+    display:none;
+}
+
+.footer-menu a{
+    color:#6f675f;
+    text-decoration:none;
+    white-space:nowrap;
+}
+.footer-menu a:hover{ text-decoration:underline; }
+
+/* SOCIAL row */
+.footer-social-row{
+    padding: 12px 0 12px; /* ✅ компактнее */
+}
+
+.footer-socials{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:22px;
+    margin:0;
+    padding:0;
+}
+
+.footer-socials a{
+    display:inline-flex;
+    height:28px;
+    opacity:.75;
+    transition:opacity .2s ease, transform .2s ease;
+    line-height:0;
+}
+.footer-socials a:hover{
+    opacity:1;
+    transform: translateY(-1px);
+}
+
+/* ✅ было 140% и раздувало. делаем норм */
+.footer-socials img,
+.footer-socials svg{
+    width:44px;
+    height:44px;
+    display:block;
+}
+
+/* GALLERY */
+.footer-gallery{}
+
+/* default track */
+.footer-gallery__track{
+    display:flex;
+    gap:10px;
+    align-items:stretch;
+    background:#f7f4ef;
+
+    padding:14px;
+    box-sizing:border-box;
+
+    cursor:grab;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-overflow-scrolling: touch;
+
+    overflow:hidden; /* для is-static */
+}
+
+.footer-gallery__track.is-dragging{ cursor:grabbing; }
+
+.footer-gallery__track *{
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+/* tile desktop default */
+.footer-gallery__item{
+    flex:0 0 auto;
+    width:154px;
+    height:154px;
+    background:#e9e3dc;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+.footer-gallery__item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* ≤7 фото: статично */
+.footer-gallery.is-static .footer-gallery__track{
+    justify-content:center;
+    overflow:hidden;
+}
+
+/* >7 фото: карусель */
+.footer-gallery.is-carousel .footer-gallery__track{
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    scroll-snap-type:x mandatory;
+    scroll-padding:24px;
+
+    scrollbar-width:none;
+}
+.footer-gallery.is-carousel .footer-gallery__track::-webkit-scrollbar{ display:none; }
+
+.footer-gallery.is-carousel .footer-gallery__item{
+    scroll-snap-align:start;
+}
+
+/* BOTTOM */
+.footer-bottom{
+    padding: 12px 0 18px; /* ✅ компактнее */
+}
+
+.footer-bottom__inner{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+
+    color:#6f675f;
+    /* ✅ чуть меньше и “как в оригинале” */
+    font-size: clamp(10px, .8vw, 13px);
+}
+
+.footer-bottom__inner .dot{ opacity:.6; }
+
+.footer-bottom__inner a{
+    color:inherit;
+    text-decoration:none;
+}
+.footer-bottom__inner a:hover{ text-decoration:underline; }
+
+.footer-bottom__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer-bottom__right{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.footer-bottom__right a{
+    text-decoration: none;
+    color: var(--text);
+    opacity: .8;
+    transition: opacity .2s ease;
+}
+
+.footer-bottom__right a:hover{
+    opacity: 1;
+}
+
+.footer-bottom__left a{
+    text-decoration: none;
+    color: var(--text);
+    opacity: .9;
+}
+
+.dot{
+    opacity: .5;
+}
+
+
+
+/* =========================================
+   MOBILE RULES (layout same, only scaling)
+   ========================================= */
+
+/* на мобилке: в видимой ширине максимум 4 фото */
+@media (max-width: 900px){
+
+    /* ✅ не меняем структуру top, только чуть поджимаем */
+    .footer-top__inner{
+        padding: 12px 18px 10px;
+        column-gap: 18px;
+    }
+    .footer-right{ padding-left: 8px; }
+
+    .footer-menu{
+        /* ✅ структура та же, просто меньше */
+        font-size: clamp(11px, 2.8vw, 14px);
+        column-gap: 18px;
+        row-gap: 10px;
+    }
+
+    .footer-seo{
+        font-size: clamp(8px, 2.2vw, 10px);
+        line-height: 1.45;
+    }
+
+    /* делаем трек всегда скроллимым по X (и для carousel, и для static — чтобы "4 влезало") */
+    .footer-gallery__track{
+        padding:12px;
+        gap:10px;
+        overflow-x:auto;
+        overflow-y:hidden;
+
+        scroll-snap-type:x mandatory;
+        scrollbar-width:none;
+    }
+    .footer-gallery__track::-webkit-scrollbar{ display:none; }
+
+    /* 4 плитки в ширину */
+    .footer-gallery__item{
+        width:auto;
+        height:auto;
+        flex: 0 0 calc((100vw - 48px - 12px*2 - 10px*3) / 4);
+        aspect-ratio: 1 / 1;
+        scroll-snap-align:start;
+        border-radius:10px;
+    }
+}
+
+@media (max-width: 768px){
+    .footer-bottom__inner{
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* очень узкие экраны: ещё чуть сжимаем текст/колонки, но layout НЕ меняем */
+@media (max-width: 420px){
+    .footer-right{ padding-left: 6px; }
+    .footer-menu{ column-gap: 14px; }
+}

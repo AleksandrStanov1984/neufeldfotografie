@@ -1,0 +1,101 @@
+.about-philosophy{
+    position: relative;
+    background: #f6f5f3;
+    overflow: hidden;
+}
+
+/* большой фон */
+.about-philosophy__bg{
+    position:absolute;
+    inset:0;
+    background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+
+    /* ч/б как в оригинале */
+    filter: grayscale(1) contrast(1.05) brightness(.95);
+    transform: scale(1.02);
+}
+
+/* затемнение под текст */
+.about-philosophy__overlay{
+    position:absolute;
+    inset:0;
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,.62) 0%,
+        rgba(0,0,0,.55) 55%,
+        rgba(0,0,0,.35) 100%
+    );
+}
+
+.about-philosophy__inner{
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(44px, 6vw, 86px) 24px;
+}
+
+/* прозрачная “карточка” слева */
+.about-philosophy__card{
+    max-width: 760px;
+    padding: clamp(24px, 3.2vw, 36px) clamp(20px, 3.2vw, 34px);
+
+    color: rgba(255,255,255,.95);
+
+    /* вместо blur — просто аккуратная подложка */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+
+.about-philosophy__title{
+    margin: 0;
+    font-family: "Cinzel Decorative", serif;
+    font-weight: 300;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-size: clamp(18px, 2.2vw, 28px);
+}
+
+.about-philosophy__text{
+    margin-top: 14px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    font-size: clamp(13px, 1.15vw, 16px);
+    line-height: 1.65;
+    max-width: 620px;
+    opacity: .95;
+}
+
+.about-philosophy__line{
+    height: 1px;
+    background: rgba(255,255,255,.45);
+}
+
+.about-philosophy__line--top{
+    margin-bottom: 14px;
+}
+
+.about-philosophy__line--mid{
+    margin-top: 12px;
+}
+
+
+/* MOBILE */
+@media (max-width: 900px){
+    .about-philosophy__overlay{
+        background: rgba(0,0,0,.55);
+    }
+
+    .about-philosophy__card{
+        max-width: 100%;
+        background: rgba(0,0,0,.18);
+        backdrop-filter: blur(2px);
+    }
+
+    .about-philosophy__text{
+        max-width: 100%;
+        font-size: 14px;
+    }
+}

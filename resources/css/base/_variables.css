@@ -1,0 +1,28 @@
+:root {
+    --font-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-title: "Cinzel", Georgia, "Times New Roman", serif;
+
+    /* Colors */
+    /*--bg: #dbd0c9;  */        /* основной фон  */
+    --surface: #ffffff;     /* карточки, модалки */
+    --text: #1b1b1b;
+    --muted: #6b6b6b;
+    --border: rgba(0,0,0,.1);
+
+    /* Layout */
+    --container: 1120px;
+    --gutter: 20px;
+
+    /* Rhythm */
+    --section-lg: 96px;
+    --section-md: 80px;
+    --section-sm: 56px;
+
+    /* UI */
+    --radius: 18px;
+    --shadow: 0 18px 60px rgba(0,0,0,.12);
+
+    /* Buttons */
+    --btn-h: 46px;
+    --btn-pad-x: 28px;
+}

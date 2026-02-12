@@ -1,0 +1,101 @@
+.newborn-hero {
+    position: relative;
+    min-height: 86vh;
+    overflow: hidden;
+}
+
+.newborn-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+}
+
+.newborn-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 96px var(--gutter) 96px;
+}
+
+.newborn-hero__title{
+    margin: 0;
+    color: rgba(246, 244, 237, 1);
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 0.008em;
+    font-size: 54px;
+    text-align: left;
+    font-family: "Cinzel Regular", "Cinzel", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.newborn-hero__subtitle,
+.newborn-hero__tagline {
+    margin: 12px 0 0;
+}
+
+/* UI overlay */
+.newborn-hero__ui {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.newborn-hero__top-line,
+.newborn-hero__mid-line,
+.newborn-hero__bottom-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(78vw, 980px);
+    height: 1px;
+    background: rgba(255,255,255,0.55);
+}
+
+.newborn-hero__top-line { top: 72px; }
+.newborn-hero__mid-line { top: 50%; }
+
+.newborn-hero__bottom {
+    position: absolute;
+    left: 50%;
+    bottom: 56px;
+    transform: translateX(-50%);
+    width: min(78vw, 980px);
+}
+
+.newborn-hero__bottom-line {
+    position: static;
+    transform: none;
+    width: 100%;
+}
+
+.newborn-hero__bottom-label {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.85);
+}
+
+.newborn-hero__arrow {
+    display: block;
+    margin: 14px auto 0;
+    width: 28px;
+    height: 28px;
+    pointer-events: auto;
+    text-decoration: none;
+}
+
+/* мобильные правила */
+@media (max-width: 900px) {
+    .newborn-hero__content { padding: 72px var(--gutter) 72px; }
+    .newborn-hero__top-line,
+    .newborn-hero__mid-line,
+    .newborn-hero__bottom { width: calc(100% - (var(--gutter) * 2)); }
+}

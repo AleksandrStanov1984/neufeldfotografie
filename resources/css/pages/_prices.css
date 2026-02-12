@@ -1,0 +1,274 @@
+/* =========================
+   HERO (50/50 full image)
+   ========================= */
+
+.prices-hero {
+    background: var(--bg, #f6f3ef);
+    padding: 0; /* было padding clamp(...) -> убрали, чтобы деление было full */
+}
+
+.prices-hero__inner {
+    /* было: width min(1200px...) + gap + align-items */
+    width: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 50/50 */
+    gap: 0; /* без промежутка */
+    align-items: stretch;
+    min-height: 85vh;
+}
+
+.prices-hero__left {
+    position: relative;
+    min-height: 85vh;
+}
+
+.prices-hero__image-wrap {
+    position: absolute;
+    inset: 0;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+.prices-hero__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    opacity: 0;
+    transition: opacity 900ms ease;
+}
+
+.prices-hero__image.is-active {
+    opacity: 1;
+}
+
+.prices-hero__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(40px, 6vw, 100px);
+}
+
+.prices-hero__kicker {
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: .75;
+    margin-bottom: 10px;
+}
+
+.prices-hero__title {
+    font-size: clamp(34px, 4.2vw, 64px);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+}
+
+.prices-hero__lead {
+    max-width: 52ch;
+    line-height: 1.7;
+    opacity: .85;
+    margin: 0 0 18px;
+}
+
+.prices-hero__cta {
+    margin-top: 8px;
+}
+
+.prices-hero__arrow {
+    margin-top: 26px;
+    opacity: .35;
+    font-size: 30px;
+}
+
+/* =========================
+   PACKAGES
+   ========================= */
+
+.prices-packages__header {
+    text-align: center;
+    margin-bottom: 26px;
+}
+
+.prices-packages__kicker {
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: .7;
+}
+
+.prices-packages__title {
+    font-size: clamp(28px, 3vw, 44px);
+    letter-spacing: .08em;
+    margin: 10px 0 12px;
+}
+
+.prices-packages__line {
+    width: 180px;
+    height: 1px;
+    background: rgba(0,0,0,.12);
+    margin: 0 auto;
+}
+
+.prices-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 26px;
+
+    /* важно для hover-scale */
+    overflow: visible;
+}
+
+.price-card {
+    background: rgba(255,255,255,.55);
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 18px;
+    padding: 18px 18px 16px;
+    box-shadow: 0 18px 50px rgba(0,0,0,.06);
+
+    /* hover animation */
+    position: relative;
+    transform-origin: center;
+    will-change: transform;
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease,
+        background-color 220ms ease;
+}
+
+.price-card:hover,
+.price-card:focus-within {
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(0,0,0,.16);
+    box-shadow: 0 22px 70px rgba(0,0,0,.10);
+    background: rgba(255,255,255,.70);
+}
+
+.price-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.price-card__badge {
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    opacity: .7;
+}
+
+.price-card__price {
+    font-weight: 600;
+}
+
+.price-card__title {
+    margin: 6px 0 10px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.price-card__list {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.7;
+    opacity: .9;
+
+    /* чтобы кнопка не прилипала */
+    margin-bottom: 12px;
+}
+
+.price-card__btn {
+    width: 100%;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,.12);
+    background: rgba(255,255,255,.55);
+    padding: 10px 14px;
+    cursor: pointer;
+
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
+}
+
+.price-card__btn:hover,
+.price-card__btn:focus-visible {
+    background: rgba(255,255,255,.82);
+    border-color: rgba(0,0,0,.22);
+    transform: translateY(-1px);
+}
+
+.prices-extras, .prices-voucher {
+    margin-top: 28px;
+    background: rgba(255,255,255,.45);
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 18px;
+    padding: 18px;
+}
+
+.prices-extras__title, .prices-voucher__title {
+    margin: 0 0 10px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.prices-extras__list {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.7;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 900px) {
+    .prices-hero__inner {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .prices-hero__left {
+        min-height: 60vh;
+        height: 60vh;
+    }
+
+    .prices-hero__image-wrap {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: 100%;
+    }
+
+    .prices-hero__image {
+        height: 100%;
+    }
+
+    .prices-hero__right {
+        padding: 40px 24px 60px;
+    }
+
+    .prices-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* на мобиле hover эффекты не нужны */
+    .price-card:hover,
+    .price-card:focus-within {
+        transform: none;
+        box-shadow: 0 18px 50px rgba(0,0,0,.06);
+        border-color: rgba(0,0,0,.06);
+        background: rgba(255,255,255,.55);
+    }
+
+    .price-card__btn:hover {
+        transform: none;
+    }
+}

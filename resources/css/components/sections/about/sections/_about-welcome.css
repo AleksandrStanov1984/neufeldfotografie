@@ -1,0 +1,155 @@
+.about-welcome{
+    background:#f6f5f3;
+    color:#6f675f;
+}
+
+.about-welcome__inner{
+    max-width:1200px;
+    margin:0 auto;
+    padding: clamp(34px, 6vw, 70px) 24px clamp(26px, 4vw, 54px);
+}
+
+/* ✅ mobilka как сейчас: заголовки центр */
+.about-welcome__top{
+    text-align:center;
+}
+
+.about-welcome__h1{
+    font-family: "Cinzel Decorative", serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: clamp(26px, 3.4vw, 50px);
+    line-height: 1.1;
+    margin: 0 0 10px;
+}
+
+.about-welcome__h2{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(16px, 1.8vw, 26px);
+    margin: 0 0 clamp(14px, 3vw, 26px);
+    opacity: .95;
+}
+
+/* ✅ МОБИЛЬНЫЙ дефолт: как сейчас (image сверху, текст ниже, всё по центру) */
+.about-welcome__grid{
+    display:block;
+    text-align:center;
+}
+
+.about-welcome__media{
+    display:flex;
+    justify-content:center;
+    margin: 0 0 clamp(14px, 3vw, 26px);
+}
+
+.about-welcome__image{
+    width: min(820px, 100%);
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 20px 60px rgba(0,0,0,.12);
+    transition: opacity .45s ease;
+}
+
+.about-welcome__image.is-fading{ opacity: .2; }
+
+.about-welcome__h3{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(14px, 1.4vw, 22px);
+    margin: 0 0 12px;
+    opacity: .95;
+}
+
+.about-welcome__text{
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: clamp(13px, 1.05vw, 16px);
+    line-height: 1.8;
+    opacity: .95;
+}
+
+.about-welcome__line{
+    height: 1px;
+    background: rgba(0,0,0,.22);
+    width: min(1150px, 100%);
+    margin: clamp(18px, 3vw, 28px) auto 10px;
+}
+
+.about-welcome__credit{
+    font-size: clamp(11px, .9vw, 13px);
+    opacity: .8;
+    text-align:center;
+}
+
+/* ================================
+   DESKTOP: text left, image right
+   ================================ */
+@media (min-width: 901px){
+
+    .about-welcome__grid{
+        display: grid; /* ← grid вместо flex */
+        grid-template-columns: 1.05fr .95fr;
+        gap: clamp(18px, 3vw, 44px);
+        align-items: start;
+        text-align: left;
+        margin-top: clamp(10px, 1.5vw, 18px);
+    }
+
+    /* TEXT LEFT */
+    .about-welcome__col--text{
+        order: 1;
+        padding-top: 6px;
+    }
+
+    .about-welcome__text{
+        margin: 0;
+        max-width: 640px;
+    }
+
+    /* IMAGE RIGHT */
+    .about-welcome__col--image{
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .about-welcome__media{
+        justify-content: flex-end;
+    }
+
+    .about-welcome__image{
+        width: 560px;
+        max-width: 100%;
+        aspect-ratio: 1 / 1; /* квадрат */
+    }
+
+    .about-welcome__credit{
+        width: 560px;
+        max-width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+/* ================================
+   MOBILE: image first, then text
+   ================================ */
+@media (max-width: 900px){
+
+    .about-welcome__grid{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-welcome__col--image{ order: 1; }
+    .about-welcome__col--text{ order: 2; }
+}
+
