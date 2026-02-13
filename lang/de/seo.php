@@ -121,6 +121,15 @@ return [
         'og_image' => '/assets/og/legal.jpg',
     ],
 
+    'author' => [
+      'title' => 'Oleksandr Stanov – Full Stack & .NET Entwickler',
+      'description' => 'Full-Stack-Entwickler (Laravel/Vue.js, C#/.NET) mit Erfahrung in E-Commerce, Telco-Systemen sowie Embedded- und Industrie-Umgebungen.',
+      'robots' => 'index,follow',
+      'og_image' => '/assets/author/profile/oleksandr-stanov.jpg',
+      'og_image_alt' => 'Oleksandr Stanov – Full Stack & .NET Entwickler',
+    ],
+
+
     // =========================
     // LEGACY STRUCTURE (keep for compatibility)
     // =========================

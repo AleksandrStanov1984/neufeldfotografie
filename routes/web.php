@@ -15,6 +15,8 @@ use App\Http\Controllers\Site\CakeSmashController;
 use App\Http\Controllers\Site\BabybauchController;
 use App\Http\Controllers\Site\GalleryPageController;
 
+use App\Http\Controllers\Site\AuthorController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
@@ -52,6 +54,8 @@ Route::get('/lang/{locale}', function (string $locale) {
 
     return redirect()->back();
 })->name('locale.switch');
+
+Route::get('/author', [AuthorController::class, 'index'])->name('author');
 
 /* Route::get('/sitemap.xml', [\App\Http\Controllers\Site\SitemapController::class, 'index'])
     ->name('sitemap'); */
