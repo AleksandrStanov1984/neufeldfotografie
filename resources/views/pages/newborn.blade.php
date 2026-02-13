@@ -31,7 +31,10 @@
     @include('sections.newborn.gallery', [
         'tPrefix' => $tPrefix,
         'images'  => $newbornGalleryImages ?? [],
-        'fallback'=> $newbornGalleryFallback ?? null
+        'fallback'=> $newbornGalleryFallback ?? null,
+        'gallerySlug' => 'newborn',
     ])
+
+    @include('sections.home.contact-cta')
 
 @endsection

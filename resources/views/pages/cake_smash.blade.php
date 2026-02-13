@@ -24,5 +24,8 @@
         'tPrefix'  => 'pages/cake_smash',
         'images'   => $cakeSmashGalleryImages ?? [],
         'fallback' => $cakeSmashGalleryFallback ?? null,
+        'gallerySlug' => 'cake-smash',
     ])
+
+    @include('sections.home.contact-cta')
 @endsection

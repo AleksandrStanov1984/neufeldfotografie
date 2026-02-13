@@ -45,9 +45,7 @@
                 {!! nl2br(e(__('components/sections/about.body'))) !!}
             </div>
 
-            <a class="home-about__btn" href="{{ route('about') }}">
-                {{ __('components/sections/about.button') }}
-            </a>
+
         </div>
 
         <div class="home-about__vline home-about__vline--right" aria-hidden="true"></div>

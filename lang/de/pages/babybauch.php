@@ -15,29 +15,31 @@ return [
     ],
 
     'reasons' => [
+        'gallery' => [
+            'title' => 'Babybauch Gallery',
+            'subtitle' => 'Elegante & natürliche Aufnahmen',
+            'image_alt' => 'Babybauch Foto',
+        ],
+
         'title' => 'BABYBAUCH SHOOTING',
-        'subtitle' => 'Sanft, ästhetisch, natürlich',
+                'subtitle' => 'Sanft, ästhetisch, natürlich',
 
-        'left' => [
-            'title' => 'Dein besonderer Lebensabschnitt',
-            'p1' => 'Die Zeit der Schwangerschaft ist ein besonderer Lebensabschnitt der Frau – und der Beginn einer neuen Familiengeschichte.',
-            'p2' => 'Ich fange die positiven Seiten der Schwangerschaft auf Bildern ein – natürlich und stilvoll.',
-            'p3' => 'Sorgfältige Retusche gehört dazu: Haut, Hintergrund, Kleidung, Formen – dezent und hochwertig.',
-        ],
+                'left' => [
+                    'title' => 'Dein besonderer Lebensabschnitt',
+                    'p1' => 'Die Zeit der Schwangerschaft ist ein besonderer Lebensabschnitt der Frau – und der Beginn einer neuen Familiengeschichte.',
+                    'p2' => 'Ich fange die positiven Seiten der Schwangerschaft auf Bildern ein – natürlich und stilvoll.',
+                    'p3' => 'Sorgfältige Retusche gehört dazu: Haut, Hintergrund, Kleidung, Formen – dezent und hochwertig.',
+                ],
 
-        'right' => [
-            'title' => 'Timing & Outfit',
-            'p1' => 'Ideal ist ca. die 32. SSW +/- 3 Wochen: Bauch schön rund – und du fühlst dich meist noch fit.',
-            'p2' => 'Was zieht man an? Ich habe eine Auswahl an Tüchern – du kannst auch eigene Kleidung tragen.',
-            'p3' => 'Bitte sag mir vorher Bescheid, damit ich Kulisse und Stil passend vorbereiten kann.',
-        ],
+                'right' => [
+                    'title' => 'Timing & Outfit',
+                    'p1' => 'Ideal ist ca. die 32. SSW +/- 3 Wochen: Bauch schön rund – und du fühlst dich meist noch fit.',
+                    'p2' => 'Was zieht man an? Ich habe eine Auswahl an Tüchern – du kannst auch eigene Kleidung tragen.',
+                    'p3' => 'Bitte sag mir vorher Bescheid, damit ich Kulisse und Stil passend vorbereiten kann.',
+                ],
 
-        'image_alt' => 'Babybauch Shooting Foto',
+                'image_alt' => 'Babybauch Shooting Foto',
+
     ],
 
-    'gallery' => [
-        'title' => 'Babybauch Gallery',
-        'subtitle' => 'Elegante & natürliche Aufnahmen',
-        'image_alt' => 'Babybauch Foto',
-    ],
 ];

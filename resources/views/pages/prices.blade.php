@@ -10,7 +10,7 @@
 {{-- PACKAGES --}}
 @include('sections.prices.packages')
 
-{{-- EXTRA CTA (у тебя уже есть) --}}
+{{-- EXTRA CTA --}}
 @include('sections.home.contact-cta')
 
 {{-- MODALS --}}

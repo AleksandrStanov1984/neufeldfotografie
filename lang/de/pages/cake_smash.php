@@ -33,11 +33,11 @@ return [
         ],
 
         'image_alt' => 'Cake Smash Shooting Foto',
-    ],
 
-    'gallery' => [
-        'title' => 'Cake Smash Gallery',
-        'subtitle' => 'Echte Momente im Studio',
-        'image_alt' => 'Cake Smash Foto',
+        'gallery' => [
+            'title' => 'Cake Smash Gallery',
+            'subtitle' => 'Echte Momente im Studio',
+            'image_alt' => 'Cake Smash Foto',
+        ],
     ],
 ];

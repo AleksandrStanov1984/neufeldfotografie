@@ -24,5 +24,8 @@
         'tPrefix'  => 'pages/babybauch',
         'images'   => $babybauchGalleryImages ?? [],
         'fallback' => $babybauchGalleryFallback ?? null,
+        'gallerySlug' => 'babybauch',
     ])
+
+    @include('sections.home.contact-cta')
 @endsection

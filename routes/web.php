@@ -13,6 +13,7 @@ use App\Http\Controllers\Site\PricesController;
 use App\Http\Controllers\Site\NewbornController;
 use App\Http\Controllers\Site\CakeSmashController;
 use App\Http\Controllers\Site\BabybauchController;
+use App\Http\Controllers\Site\GalleryPageController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -23,8 +24,12 @@ Route::get('/price', [PricesController::class, 'index'])->name('price');
 
 Route::get('/babybauch', [\App\Http\Controllers\Site\BabybauchController::class, 'index'])->name('babybauch');
 Route::get('/cake-smash', [\App\Http\Controllers\Site\CakeSmashController::class, 'index'])->name('cake_smash');
-Route::get('/newborn', [NewbornController::class, 'index'])
-    ->name('newborn');
+Route::get('/newborn', [NewbornController::class, 'index'])->name('newborn');
+
+
+Route::get('/gallery/{slug}', [GalleryPageController::class, 'show'])
+    ->whereIn('slug', ['newborn', 'cake-smash', 'babybauch'])
+    ->name('gallery.show');
 
 
 Route::get('/author', fn () => view('pages.author'))->name('author');

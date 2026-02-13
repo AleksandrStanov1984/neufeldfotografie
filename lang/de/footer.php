@@ -2,10 +2,13 @@
 
 return [
     'menu' => [
-       'home' => 'Hause',
+       'home' => 'Haupt',
        'about' => 'Uber mich',
        'contact' => 'Kontakt',
        'prices' => 'Preise',
+       'newborn' => 'Neugeborenes',
+       'babybauch' => 'Babybauch',
+       'cake_smash' => 'Cake Smash',
     ],
     'short_note' => 'Fotografie mit Gefühl und Ruhe.',
     'links' => 'Links',

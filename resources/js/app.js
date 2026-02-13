@@ -19,6 +19,7 @@ import { initContactHeroRotator } from './components/contact/components/contact-
 import { initPricesHeroRotator } from './components/price/prices-hero-rotator';
 
 import { initNewbornGallery } from './components/gallery/newborn-gallery';
+import  './components/gallery/gallery-modal';
 
 document.addEventListener('DOMContentLoaded', () => {
     initModals();

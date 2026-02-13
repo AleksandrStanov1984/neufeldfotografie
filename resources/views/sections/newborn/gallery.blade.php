@@ -9,6 +9,11 @@
 
     // уникальный id для aria (чтобы не пересекалось между страницами/секциями)
     $titleId = 'gallery-title-' . str_replace(['/', '.'], '-', $tPrefix);
+
+    $gallerySlug = $gallerySlug
+            ?? (str_contains($tPrefix, 'babybauch') ? 'babybauch'
+            : (str_contains($tPrefix, 'cake_smash') ? 'cake-smash'
+            : 'newborn'));
 @endphp
 
 <section class="newborn-gallery" aria-labelledby="{{ $titleId }}">
@@ -18,13 +23,16 @@
         <div class="newborn-gallery__topline" aria-hidden="true"></div>
 
         <h2 class="newborn-gallery__title" id="{{ $titleId }}">
-            {{ __($tPrefix.'.gallery.title') }}
+            <a class="newborn-gallery__title-link"
+               href="{{ route('gallery.show', ['slug' => $gallerySlug]) }}">
+                {{ __($tPrefix.'.reasons.gallery.title') }}
+            </a>
         </h2>
 
         <div class="newborn-gallery__subrow">
             <div class="newborn-gallery__line" aria-hidden="true"></div>
             <div class="newborn-gallery__subtitle">
-                {{ __($tPrefix.'.gallery.subtitle') }}
+                {{ __($tPrefix.'.reasons.gallery.subtitle') }}
             </div>
         </div>
 

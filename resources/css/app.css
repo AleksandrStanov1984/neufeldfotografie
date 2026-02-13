@@ -30,6 +30,8 @@
 @import "./components/sections/newborn/reasons.css";
 @import "./components/sections/newborn/gallery.css";
 
+@import "./components/sections/gallery/gallery.css";
+
 
 
 @import "./components/sections/legal/_legal-page.css";

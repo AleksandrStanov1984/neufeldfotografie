@@ -23,11 +23,15 @@
 
                     <a href="{{ route('home') }}">{{ __('footer.menu.home') }}</a>
 
-                    <a href="{{ route('about') }}">{{ __('footer.menu.about') }}</a>
-
                     <a href="{{ route('contact') }}">{{ __('footer.menu.contact') }}</a>
 
                     <a href="{{ route('price') }}">{{ __('footer.menu.prices') }}</a>
+
+                    <a href="{{ route('babybauch') }}">{{ __('footer.menu.babybauch') }}</a>
+
+                    <a href="{{ route('cake_smash') }}">{{ __('footer.menu.cake_smash') }}</a>
+
+                    <a href="{{ route('newborn') }}">{{ __('footer.menu.newborn') }}</a>
 
                     <span aria-hidden="true"></span>
                 </nav>

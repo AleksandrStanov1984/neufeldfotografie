@@ -1,7 +1,22 @@
 <?php
 
 return [
-    'title' => 'Galerie — Neufeld Fotografie',
-    'h1' => 'Galerie',
-    'body' => 'Hier kommt später die Galerie-Struktur.',
+  'hero' => [
+    'newborn' => [
+      'title' => 'Newborn Galerie',
+      'subtitle' => 'Neufeld Fotografie',
+    ],
+    'cake_smash' => [
+      'title' => 'Cake Smash Galerie',
+      'subtitle' => 'Neufeld Fotografie',
+    ],
+    'babybauch' => [
+      'title' => 'Babybauch Galerie',
+      'subtitle' => 'Neufeld Fotografie',
+    ],
+  ],
+
+  'grid' => [
+    'heading' => 'Galerie',
+  ],
 ];

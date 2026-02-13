@@ -78,6 +78,24 @@ return [
         'og_image' => '/assets/og/default.jpg',
     ],
 
+     'gallery_newborn' => [
+         'title' => 'Newborn Galerie | Neufeld Fotografie',
+         'description' => 'Newborn Galerie – natürliche Babyfotos in Studio-Ästhetik.',
+         'keywords' => 'Neugeborenenfotografie, Newborn, Galerie, Rottweil',
+     ],
+
+     'gallery_cake_smash' => [
+         'title' => 'Cake Smash Galerie | Neufeld Fotografie',
+         'description' => 'Cake Smash Galerie – Geburtstagsshooting und Familienmomente.',
+         'keywords' => 'Cake Smash, Fotoshooting, Galerie, Rottweil',
+     ],
+
+     'gallery_babybauch' => [
+         'title' => 'Babybauch Galerie | Neufeld Fotografie',
+         'description' => 'Babybauch Galerie – Schwangerschaftsfotos mit eleganter Ästhetik.',
+         'keywords' => 'Babybauch, Schwangerschaftsfotografie, Galerie, Rottweil',
+     ],
+
     // =========================
     // LEGAL PAGES (top-level keys)
     // =========================
