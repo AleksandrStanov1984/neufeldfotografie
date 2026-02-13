@@ -2,7 +2,7 @@
 
 return [
     'h1' => 'Schön, dich kennenzulernen, Mama!',
-    'h2' => 'Ich heiße Elisabeth.',
+    'h2' => 'Ich heiße Angelika .',
     'h3' => 'Ein kleines Kapitel aus meiner eigenen Geschichte.',
     'body' =>
         "Ich bin in der Nähe von München in Deutschland aufgewachsen.\n"
@@ -16,6 +16,6 @@ return [
         ."Zwei Jahre später kam meine zweite Tochter.\n"
         ."Und jeden Tag zu sehen, wie sie wachsen, ist wunderschön – und gleichzeitig bittersüß.\n"
         ."Genau deshalb möchte ich eure kostbaren Momente für immer festhalten.",
-    'credit' => 'Fotografie: Laura Coleman.',
+    'credit' => 'Fotografie: Angelika.',
     'image_aria' => 'Über mich – Familienfoto',
 ];

@@ -1,0 +1,146 @@
+/* ===============================
+   NEWBORN GALLERY (header + horizontal slider)
+================================ */
+
+.newborn-gallery{
+    background: #f7f3ee;
+    padding: 0 0 70px;
+}
+
+.newborn-gallery__inner{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.newborn-gallery__topline{
+    height: 1px;
+    background: rgba(30,25,20,0.20);
+    margin: 0 -40px 26px;
+}
+
+.newborn-gallery__title{
+    margin: 0 0 16px;
+    text-align: left;
+    font-family: var(--font-title);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 26px;
+    line-height: 1.1;
+    color: rgba(30,25,20,0.85);
+}
+
+.newborn-gallery__subrow{
+    display: grid;
+    grid-template-columns: 380px auto;
+    align-items: center;
+    column-gap: 18px;
+    margin: 0 0 28px;
+}
+
+.newborn-gallery__line{
+    height: 1px;
+    background: rgba(30,25,20,0.20);
+}
+
+.newborn-gallery__subtitle{
+    font-family: var(--font-title);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.1;
+    color: rgba(30,25,20,0.70);
+}
+
+/* slider */
+.newborn-gallery__slider{
+    position: relative;
+    padding: 0 0 10px;
+}
+
+.newborn-gallery__track{
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0 10px;
+
+    scrollbar-width: none;
+
+    cursor: grab;                 /* 👈 рука */
+    user-select: none;            /* 👈 чтобы не выделяло текст */
+}
+.newborn-gallery__track::-webkit-scrollbar{ display:none; }
+
+.newborn-gallery__track.is-dragging{
+    cursor: grabbing;             /* 👈 во время drag */
+}
+
+.newborn-gallery__cell{
+    flex: 0 0 auto;
+    width: 520px;
+    scroll-snap-align: center;
+}
+
+.newborn-gallery__cell img{
+    width: 100%;
+    display: block;
+
+    border-radius: 18px;          /* 👈 округлые углы */
+    overflow: hidden;
+
+    pointer-events: none;         /* 👈 чтобы drag работал корректно */
+}
+
+/* nav */
+.newborn-gallery__nav{
+    position: absolute;
+    top: -56px;
+    background: transparent;
+    border: 0;
+    padding: 8px 8px;
+    cursor: pointer;
+    color: rgba(30,25,20,0.70);
+}
+
+.newborn-gallery__nav--next{ right: 0; }
+.newborn-gallery__nav--prev{ right: 60px; }
+
+.newborn-gallery__slash{
+    position: absolute;
+    top: -50px;
+    right: 44px;
+    font-family: var(--font-title);
+    font-size: 18px;
+    color: rgba(30,25,20,0.55);
+}
+
+.newborn-gallery__arrow{
+    font-family: var(--font-title);
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* mobile */
+@media (max-width: 900px){
+    .newborn-gallery__inner{ padding: 0 20px; }
+    .newborn-gallery__topline{ margin: 0 -20px 22px; }
+
+    .newborn-gallery__title{
+        font-size: 22px;
+    }
+
+    .newborn-gallery__subrow{
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+    }
+
+    .newborn-gallery__cell{
+        width: 78vw;
+    }
+
+    .newborn-gallery__nav{
+        top: -52px;
+    }
+}

@@ -64,7 +64,28 @@
                 <a href="{{ route('about') }}">{{ __('nav.about') }}</a>
                 <a href="{{ route('contact') }}">{{ __('nav.contact') }}</a>
                 <a href="{{ route('price') }}">{{ __('nav.prices') }}</a>
-                <a href="{{ route('gallery') }}">{{ __('nav.gallery') }}</a>
+                <div class="hero-nav__dd" data-gallery-dd>
+                    <button class="hero-nav__dd-btn"
+                            type="button"
+                            data-gallery-dd-btn
+                            aria-haspopup="menu"
+                            aria-expanded="false">
+                        {{ __('nav.gallery') }}
+                    </button>
+
+                    <div class="hero-nav__dd-menu" data-gallery-dd-menu role="menu" hidden>
+                        <a role="menuitem" class="hero-nav__dd-item" href="{{ route('newborn') }}">
+                            {{ __('nav.newborn') }}
+                        </a>
+                        <a role="menuitem" class="hero-nav__dd-item" href="{{ route('babybauch') }}">
+                            {{ __('nav.babybauch') }}
+                        </a>
+                        <a role="menuitem" class="hero-nav__dd-item" href="{{ route('cake_smash') }}">
+                            {{ __('nav.cake_smash') }}
+                        </a>
+                    </div>
+                </div>
+
             </nav>
 
             <div class="hero-nav__rule" aria-hidden="true"></div>

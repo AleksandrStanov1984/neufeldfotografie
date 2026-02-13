@@ -30,25 +30,25 @@
     margin: clamp(14px, 2vw, 22px) 0;
 }
 
-/* ✅ правильные колонки для линий */
+/* правильные колонки для линий */
 .home-about__vline--left{  grid-column: 2; }
 .home-about__vline--right{ grid-column: 5; }
 
-/* ✅ правильные колонки для контента */
+/* правильные колонки для контента */
 .home-about__left{  grid-column: 3; }
 .home-about__right{ grid-column: 4; }
 
 /* левый и правый блоки */
 .home-about__left{
     padding-top: 10px;
-    padding-left: 14px;   /* воздух между линией и контентом */
+    padding-left: 66px;   /* воздух между линией и контентом */
     padding-right: 18px;  /* воздух к центру */
 }
 
 .home-about__right{
     padding-top: 10px;
     padding-left: 18px;   /* воздух от центра */
-    padding-right: 14px;  /* воздух между текстом и правой линией */
+    padding-right: 86px;  /* воздух между текстом и правой линией */
     text-align: left;
 }
 
@@ -93,8 +93,8 @@
 }
 
 .home-about__image{
+    margin-top: 30%;
     width:100%;
-    height:auto;
     display:block;
     border-radius: 12px;
     transition: filter .22s ease, transform .22s ease;

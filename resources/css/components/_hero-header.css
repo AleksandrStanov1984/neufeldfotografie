@@ -468,6 +468,24 @@ body.page-inner .hero-header{
     border-bottom: 1px solid rgba(0,0,0,.12);
 }
 
+/* ===========================
+   HEADER: transparent pages (home/newborn/babybauch/cake_smash/contact)
+   =========================== */
+
+body.page-home .hero-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    pointer-events: auto;
+
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: 0;
+}
+
+
 /* линию сверху на внутренних страницах лучше выключить или сделать темнее */
 body.page-inner .hero-header__rule{
     background: rgba(0,0,0,.14);

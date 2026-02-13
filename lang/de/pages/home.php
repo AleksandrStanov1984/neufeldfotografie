@@ -9,17 +9,27 @@ return [
 
     // INTRO
     'intro_h1' => 'HI, ICH BIN ANGELIKA',
-    'intro_tags' => 'Mama | kreativ | liebevoll | geduldig | coffeelover',
+    'intro_tags' => 'Mama | Familienmensch | kreativ | einfühlsam | reiseliebend',
     'intro_role' => 'Fotografin aus Blumenfeld',
 
     // MEET
-    'meet_title' => 'Schön, dass du da bist',
-    'meet_p1' => 'Bei uns Zuhause ist immer was los. Unsere Kinder beleben das Haus und sorgen für Stimmung!',
-    'meet_p2' => 'Neben meiner Familie schlägt mein Herz für guten Kaffee und die Planung unserer alljährlichen Fernreisen.',
-    'meet_p3' => 'Mit der Fotografie habe ich nicht nur ein Hobby fürs Leben gefunden.',
-    'meet_p4' => 'Sie ist meine Leidenschaft, mein Ausgleich und meine Berufung.',
-    'meet_p5' => 'Familien beschreiben mich als fröhlich, geduldig und ausgeglichen.',
-    'meet_p6' => 'Genau das sorgt für eine entspannte Atmosphäre beim Shooting.',
+    'meet_title' => 'Schön, dass ihr hier seid!',
+
+    'meet_p1' => 'Seit einigen Jahren begleitet mich die Fotografie und ich liebe es, Erinnerungen für die Ewigkeit festzuhalten.',
+
+    'meet_p2' => 'Seit ich selbst Mama bin, ist mir noch bewusster geworden, wie wertvoll diese besonderen Momente sind. Die Zeit vergeht so schnell – umso wertvoller ist es, durch Bilder später wieder in diese besonderen Zeiten eintauchen zu können.',
+
+    'meet_p3' => 'Ich bin ein absoluter Familienmensch und liebe es, die Welt gemeinsam mit meiner Familie zu entdecken.',
+
+    'meet_p4' => 'Es gibt diese besonderen Momente, die mich einfach glücklich machen: das Gefühl von warmem Sand unter meinen Füßen, Sonnenuntergänge und die Freiheit beim Reisen.',
+
+    'meet_p5' => 'Ich liebe es zu lachen und Zeit mit meinen Liebsten zu verbringen.',
+
+    'meet_p6' => 'Mir liegt es sehr am Herzen, dass ihr euch bei mir rundum geborgen fühlt.',
+
+    'meet_p7' => 'Mit viel Zeit, Einfühlungsvermögen und Ruhe erschaffen wir kostbare Momente und liebevolle Aufnahmen, die für euch mit den Jahren zu einem unbezahlbaren Schatz werden.',
+
+    'meet_quote' => 'Momente vergehen. Erinnerungen bleiben.',
 
     // CHAPTERS
     'chapters_title' => 'Meine Shootings',

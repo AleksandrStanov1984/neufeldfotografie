@@ -3,6 +3,7 @@ import './bootstrap';
 import { initModals } from './modules/modals';
 import { initButtons } from './modules/buttons';
 import { initForms } from './modules/forms';
+import { initGalleryDropdown } from './modules/header';
 
 import { initMobileNav } from './components/mobile-nav';
 import { initHeroRotator } from './components/hero-rotator';
@@ -17,10 +18,13 @@ import { initBgRotator } from './components/about/components/bg-rotator';
 import { initContactHeroRotator } from './components/contact/components/contact-hero-rotator';
 import { initPricesHeroRotator } from './components/price/prices-hero-rotator';
 
+import { initNewbornGallery } from './components/gallery/newborn-gallery';
+
 document.addEventListener('DOMContentLoaded', () => {
     initModals();
     initButtons();
     initForms();
+    initGalleryDropdown();
 
     initMobileNav();
     initHeroRotator();
@@ -33,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initBgRotator();
     initContactHeroRotator();
     initPricesHeroRotator();
+
+    initNewbornGallery();
 
     // header scroll state
     const header = document.querySelector('[data-hero-header]');

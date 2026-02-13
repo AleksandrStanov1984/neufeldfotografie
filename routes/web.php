@@ -10,21 +10,20 @@ use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\Site\LegalController;
 use App\Http\Controllers\Site\HeroImagesController;
 use App\Http\Controllers\Site\PricesController;
+use App\Http\Controllers\Site\NewbornController;
+use App\Http\Controllers\Site\CakeSmashController;
+use App\Http\Controllers\Site\BabybauchController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-
-Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
-
-Route::get('/babybauch', fn() => view('pages.babybauch'))->name('babybauch');
-Route::get('/cake-smash', fn() => view('pages.cake_smash'))->name('cake_smash');
-
 Route::get('/price', [PricesController::class, 'index'])->name('price');
 
-Route::get('/newborn', [\App\Http\Controllers\Site\NewbornController::class, 'index'])
+Route::get('/babybauch', [\App\Http\Controllers\Site\BabybauchController::class, 'index'])->name('babybauch');
+Route::get('/cake-smash', [\App\Http\Controllers\Site\CakeSmashController::class, 'index'])->name('cake_smash');
+Route::get('/newborn', [NewbornController::class, 'index'])
     ->name('newborn');
 
 

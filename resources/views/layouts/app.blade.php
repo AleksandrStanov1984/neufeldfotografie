@@ -73,13 +73,11 @@
 </head>
 
 @php
-    $lightRoutes = ['home', 'newborn', 'contact'];
+    $lightRoutes = ['home', 'newborn', 'babybauch', 'cake_smash', 'contact'];
     $isLightHeader = request()->routeIs(...$lightRoutes);
 @endphp
 
 <body class="{{ $isLightHeader ? 'page-home' : 'page-inner' }}">
-
-
 
     @include('partials.hero-header')
 

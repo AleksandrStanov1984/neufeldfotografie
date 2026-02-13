@@ -1,0 +1,92 @@
+/* ===== Galerie dropdown inside hero-nav ===== */
+.hero-nav__dd{
+    position: relative;
+    display: inline-block;
+}
+
+/* Gallery button MUST look exactly like nav links */
+.hero-nav__dd-btn{
+    -webkit-appearance: none;
+    appearance: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 18px;                 /* как у ссылок */
+    border-radius: 999px;
+
+    background: transparent;
+    border: 1px solid transparent;     /* hover-border */
+    margin: 0;
+
+    font-family: var(--font-title);
+    font-weight: 400;
+    font-style: italic;                /* если ссылки курсивные */
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    line-height: 1;
+
+    color: rgba(30,25,20,0.75);
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: border-color .2s ease, color .2s ease, opacity .2s ease;
+}
+
+/* hover like others */
+.hero-nav__dd-btn:hover{
+    border-color: rgba(30,25,20,0.35);
+    color: rgba(30,25,20,0.90);
+    opacity: 1;
+}
+
+/* focus for accessibility */
+.hero-nav__dd-btn:focus-visible{
+    outline: none;
+    border-color: rgba(30,25,20,0.55);
+}
+
+/* menu panel */
+.hero-nav__dd-menu{
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+
+    min-width: 220px;
+    padding: 12px;
+
+    background: rgba(255,255,255,0.96);
+    border: 1px solid rgba(30,25,20,0.15);
+    border-radius: 18px;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    backdrop-filter: none;
+}
+
+/* dropdown items */
+.hero-nav__dd-item{
+    display: block;
+    text-align: center;
+
+    padding: 10px 16px;
+    border-radius: 999px;
+
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    text-decoration: none;
+    color: rgba(30,25,20,0.80);
+}
+
+.hero-nav__dd-item:hover{
+    background: rgba(30,25,20,0.06);
+}
+
+/* mobile */
+@media (max-width: 900px){
+    .hero-nav__dd-menu{ min-width: 240px; }
+}

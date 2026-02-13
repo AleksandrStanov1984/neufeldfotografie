@@ -27,9 +27,8 @@
 
 @import "./components/sections/newborn/_hero.css";
 @import "./components/sections/newborn/intro.css";
-
-
-
+@import "./components/sections/newborn/reasons.css";
+@import "./components/sections/newborn/gallery.css";
 
 
 
