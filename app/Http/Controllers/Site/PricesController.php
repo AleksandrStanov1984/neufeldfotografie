@@ -3,26 +3,25 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\File;
-
 use App\Support\Images;
+use App\Support\SectionPaths;
 
 class PricesController extends Controller
 {
     public function index()
     {
-        $fallback = asset('assets/images/fallback.png');
+        $fallback = SectionPaths::fallbackUrl();
 
-        // hero images
-        $dir = 'assets/components/sections/price/sections/price/main';
-        $images = Images::list($dir);
+        // HERO
+        $heroImages = Images::list(
+            SectionPaths::dir('prices', 'hero')
+        );
 
         return view('pages.prices', [
             'seoKey' => 'prices',
 
-            'pricesHeroImages' => $images,
-            'pricesHeroFirst' => $images[0] ?? $fallback,
+            'pricesHeroImages'   => $heroImages,
+            'pricesHeroFirst'    => $heroImages[0] ?? $fallback,
             'pricesHeroFallback' => $fallback,
             'pricesHeroInterval' => 5000,
         ]);

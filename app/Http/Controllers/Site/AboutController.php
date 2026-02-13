@@ -3,29 +3,24 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\File;
-
 use App\Support\Images;
+use App\Support\SectionPaths;
 
 class AboutController extends Controller
 {
     public function index()
     {
-        $dir = 'assets/about/components/sections/welcome';
-        $images = Images::list($dir);
+        $fallback = SectionPaths::fallbackUrl();
 
-        $fallback = asset('assets/images/fallback.png');
-
-        $philosophyBgDir = 'assets/about/backgraund/first';
-        $philosophyBgImages = Images::list($philosophyBgDir);
+        $welcomeImages = Images::list(SectionPaths::dir('about', 'welcome'));
+        $philosophyBgImages = Images::list(SectionPaths::dir('about', 'philosophy_bg'));
 
         return view('pages.about', [
             'seoKey' => 'about',
 
             // welcome
-            'welcomeImages'   => $images,
-            'welcomeFirst'    => $images[0] ?? $fallback,
+            'welcomeImages'   => $welcomeImages,
+            'welcomeFirst'    => $welcomeImages[0] ?? $fallback,
             'welcomeFallback' => $fallback,
             'welcomeInterval' => 5000,
 

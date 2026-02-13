@@ -4,34 +4,44 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Support\Images;
+use App\Support\SectionPaths;
 
 class BabybauchController extends Controller
 {
     public function index()
     {
-        $fallback = asset('assets/images/fallback.png');
+        $fallback = SectionPaths::fallbackUrl();
 
-        $heroDir = 'assets/components/sections/babybauch/hero';
-        $heroImages = Images::list($heroDir);
+        // HERO
+        $heroImages = Images::list(
+            SectionPaths::dir('babybauch', 'hero')
+        );
 
-        $reasonsDir = 'assets/components/sections/babybauch/reasons';
-        $reasonsImages = Images::list($reasonsDir);
+        // REASONS
+        $reasonsImages = Images::list(
+            SectionPaths::dir('babybauch', 'reasons')
+        );
 
-        $galleryDir = 'assets/components/sections/babybauch/gallery';
-        $galleryImages = Images::list($galleryDir);
+        // GALLERY
+        $galleryImages = Images::list(
+            SectionPaths::dir('babybauch', 'gallery')
+        );
 
         return view('pages.babybauch', [
             'seoKey' => 'babybauch',
 
+            // hero
             'babybauchHeroImages'   => $heroImages,
             'babybauchHeroFirst'    => $heroImages[0] ?? $fallback,
             'babybauchHeroFallback' => $fallback,
             'babybauchHeroInterval' => 5000,
 
+            // reasons
             'babybauchReasonsImages'   => $reasonsImages,
             'babybauchReasonsFirst'    => $reasonsImages[0] ?? $fallback,
             'babybauchReasonsFallback' => $fallback,
 
+            // gallery
             'babybauchGalleryImages'   => $galleryImages,
             'babybauchGalleryFallback' => $fallback,
         ]);

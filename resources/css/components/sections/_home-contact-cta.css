@@ -1,177 +1,221 @@
 /* ===========================
-   HOME CONTACT CTA (1:1)
+   HOME CONTACT CTA (gallery typography + vertical text)
    =========================== */
 
 .home-contact-cta{
-    background: #f6f1ec; /* тёплый светлый как на скрине */
+    background: #f7f3ee; /* как у gallery */
     padding: 0;
 }
 
 .home-contact-cta__inner{
-    max-width: 1200px;
+    max-width: var(--container);
     margin: 0 auto;
-    padding: 34px 24px;
+    padding: 34px 40px;
 
     display: grid;
-    grid-template-columns: 1.25fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
     gap: 60px;
-    align-items: center;
+    align-items: start;
 
-    border-top: 1px solid rgba(0,0,0,.35);
-    border-bottom: 1px solid rgba(0,0,0,.35);
-}
+    border-top: 1px solid rgba(30,25,20,0.20);
+    border-bottom: 1px solid rgba(30,25,20,0.20);
 
-/* LEFT */
-.home-contact-cta__left{
-    display: grid;
-    grid-template-columns: 26px 1fr; /* вертикальный текст + картинка */
-    gap: 18px;
-    align-items: center;
-}
-
-.home-contact-cta__vtext{
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 14px;
-    letter-spacing: .02em;
-    color: rgba(117,113,113,1);
-    opacity: .9;
-}
-
-/* clickable image */
-.home-contact-cta__image-link{
-    display: block;
-    width: min(520px, 100%);
-    border: 1px solid rgba(0,0,0,.35);
-    border-radius: 0;          /* как на рефе — почти прямоугольник */
-    overflow: hidden;          /* важно */
-    text-decoration: none;
-    cursor: pointer;
     position: relative;
 }
 
-.home-contact-cta__image{
-    width: 100%;
-    height: auto;
+/* убрать синий/подчёркивание */
+.home-contact-cta a{
+    text-decoration: none;
+    color: inherit;
+}
+.home-contact-cta a:visited{ color: inherit; }
+
+/* ===== LEFT side: vertical text + photo ===== */
+/* делаем левую колонку как "26px + фото" */
+.home-contact-cta__photo{
+    grid-column: 1;
     display: block;
-    transition: transform .35s ease, filter .35s ease;
+    width: min(560px, 100%);
+    aspect-ratio: 3 / 2;
+
+    border-radius: 25px;
+    overflow: hidden;
+
+    /* ✅ без бордера */
+    border: 0;
+
+    background-size: cover;
+    background-position: center;
+
+    box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+    transition: transform .35s ease, filter .35s ease, opacity .22s ease;
 }
 
-/* hover as we did */
-.home-contact-cta__image-link:hover .home-contact-cta__image{
-    transform: scale(1.02);
-    filter: brightness(1.07) contrast(1.02);
+/* hover */
+.home-contact-cta__photo:hover{
+    transform: scale(1.01);
+    filter: brightness(1.05) contrast(1.02);
 }
 
-.home-contact-cta__image-link::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: rgba(255,255,255,.10);
-    opacity:0;
-    transition: opacity .35s ease;
-    pointer-events:none;
-}
-.home-contact-cta__image-link:hover::after{ opacity:1; }
+/* fade helper for rotator */
+.home-contact-cta__photo.is-fading{ opacity: .82; }
 
-/* RIGHT */
-.home-contact-cta__right{
-    text-align: left;
-}
+/* вертикальная подпись слева от фото */
+.home-contact-cta__vertical{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
 
-.home-contact-cta__title{
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: clamp(22px, 2.6vw, 34px);
-    line-height: 1.15;
-    color: rgba(117,113,113,1);
-    margin: 0 0 22px 0;
-    max-width: 420px;
+    writing-mode: vertical-rl;
+
+    font-family: var(--font-title);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 12px;
+    color: rgba(30,25,20,0.55);
 }
 
-/* CTA row */
-.home-contact-cta__cta{
+.home-contact-cta__inner{
+    max-width: var(--container);
+    margin: 0 auto;
+
+    /* было 34px 40px */
+    padding: 18px 40px;
+
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.home-contact-cta__photo{
+    margin-left: 26px; /* освобождаем место под вертикальный текст */
+}
+
+/* ===== RIGHT side ===== */
+.home-contact-cta__photo{
+    position: relative;
+    margin-left: 36px; /* место под вертикальный текст */
+
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+
+/* pill как gallery title */
+.home-contact-cta__mini{
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    text-decoration: none;
 
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 14px;
-    color: rgba(117,113,113,1);
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(30,25,20,0.25);
 
-    transition: transform .2s ease, opacity .2s ease;
+    font-family: var(--font-title);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 12px;
+    color: rgba(30,25,20,0.75);
+
+    transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
 
-.home-contact-cta__cta:hover{
-    transform: translateX(2px);
-    opacity: .9;
+.home-contact-cta__mini:hover{
+    border-color: rgba(30,25,20,0.35);
+    background: rgba(255,255,255,0.55);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
 }
 
 .home-contact-cta__arrow{
-    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 999px;
+    border: 1px solid rgba(30,25,20,0.25);
+
+    transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+.home-contact-cta__arrow:hover{
+    border-color: rgba(30,25,20,0.35);
+    background: rgba(255,255,255,0.55);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+}
+
+.home-contact-cta__arrow-icon{
+    font-family: var(--font-title);
+    font-size: 16px;
     line-height: 1;
+    color: rgba(30,25,20,0.75);
+}
+
+/* title/desc */
+.home-contact-cta__title{
+    margin: 0 0 12px;
+    font-family: var(--font-title);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 26px;
+    line-height: 1.15;
+    color: rgba(30,25,20,0.85);
+    max-width: 520px;
+}
+
+.home-contact-cta__desc{
+    font-family: var(--font-base);
+    font-size: 12px;
+    line-height: 1.85;
+    color: rgba(30,25,20,0.62);
+    max-width: 520px;
 }
 
 /* ACCESSIBILITY */
-.home-contact-cta__image-link:focus-visible,
-.home-contact-cta__cta:focus-visible{
+.home-contact-cta__photo:focus-visible,
+.home-contact-cta__mini:focus-visible,
+.home-contact-cta__arrow:focus-visible{
     outline: 2px solid rgba(130,120,112,.55);
     outline-offset: 4px;
 }
 
-.home-contact-cta__image{
-    width: 100%;
-    max-width: 560px;
-    aspect-ratio: 3 / 2;
-    background-size: cover;
-    background-position: center;
-    transition: background-image .4s ease;
-    border-radius: 25px;
-}
-
-/* fade helper for rotator */
-.home-contact-cta__image.cta-rotator{
-    transition: opacity .22s ease;
-}
-.home-contact-cta__image.cta-rotator.is-fading{
-    opacity: .82;
-}
-
-
-/* MOBILE: картинка сверху, текст/cta снизу */
+/* MOBILE */
 @media (max-width: 900px){
     .home-contact-cta__inner{
         grid-template-columns: 1fr;
-        gap: 26px;
-        padding: 26px 16px;
+        gap: 22px;
+        padding: 26px 20px;
     }
 
-    .home-contact-cta__right{
-        text-align: center;
-    }
-
-    .home-contact-cta__title{
-        margin: 0 auto 16px;
-        text-align: center;
-    }
-
-    .home-contact-cta__cta{
+    .home-contact-cta__toprow{
         justify-content: center;
     }
 
-    .home-contact-cta__left{
-        grid-template-columns: 22px 1fr;
-        justify-content: center;
+    .home-contact-cta__title,
+    .home-contact-cta__desc{
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .home-contact-cta__image-link{
-        width: min(560px, 100%);
+    /* на мобиле вертикальный текст можно сделать обычным сверху/снизу,
+       но ты говорил мобильно уже ок — поэтому просто спрячем */
+    .home-contact-cta__vertical{
+        display: none;
+    }
+
+    .home-contact-cta__photo{
+        margin-left: 0;
+        width: 100%;
     }
 }

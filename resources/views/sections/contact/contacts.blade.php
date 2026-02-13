@@ -28,27 +28,23 @@
                 <div class="contact-panel__divider" aria-hidden="true"></div>
 
                 <div class="contact-panel__links" role="list">
-                    @foreach($socialLinks as $link)
-                        @php
-                            $label = $link['label'] ?? '';
-                            $url   = $link['url'] ?? '#';
-                            $icon  = $link['icon'] ?? null;
-                        @endphp
+                  @foreach($socialLinks as $social)
+                    <a class="contact-panel__link"
+                       role="listitem"
+                       href="{{ $social['url'] ?? '#' }}"
+                       target="{{ !empty($social['url']) ? '_blank' : '_self' }}"
+                       rel="{{ !empty($social['url']) ? 'noopener noreferrer' : '' }}"
+                       aria-label="{{ $social['label'] ?? '' }}">
 
-                        <a class="contact-panel__link"
-                           role="listitem"
-                           href="{{ $url }}"
-                           target="{{ str_starts_with($url, 'http') ? '_blank' : '_self' }}"
-                           rel="{{ str_starts_with($url, 'http') ? 'noopener noreferrer' : '' }}">
-                            <span class="contact-panel__icon" aria-hidden="true">
-                                @if($icon)
-                                    <img src="{{ $icon }}" alt="" loading="lazy">
-                                @endif
-                            </span>
-                            <span class="contact-panel__label">{{ $label }}</span>
-                        </a>
-                    @endforeach
+                      <span class="contact-panel__icon" aria-hidden="true">
+                        <img src="{{ $social['icon_url'] ?? '' }}" alt="" loading="lazy">
+                      </span>
+
+                      <span class="contact-panel__label">{{ $social['label'] ?? '' }}</span>
+                    </a>
+                  @endforeach
                 </div>
+
 
                 <div class="contact-panel__divider" aria-hidden="true"></div>
 

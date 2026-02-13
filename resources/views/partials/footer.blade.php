@@ -45,16 +45,19 @@
         <div class="footer-social-row__inner">
             <div class="footer-socials">
                 @foreach($footerSocials as $social)
+                    @continue(empty($social['url']) || empty($social['icon_url']))
+
                     <a href="{{ $social['url'] }}"
                        target="_blank"
-                       rel="noopener"
-                       aria-label="{{ $social['label'] }}">
-                        <img src="{{ asset('assets/icons/'.$social['icon']) }}" alt="{{ $social['label'] }}">
+                       rel="noopener noreferrer"
+                       aria-label="{{ $social['label'] ?? '' }}">
+                        <img src="{{ $social['icon_url'] }}" alt="{{ $social['label'] ?? '' }}" loading="lazy">
                     </a>
                 @endforeach
             </div>
         </div>
     </div>
+
 
     {{-- GALLERY --}}
     <div class="footer-gallery {{ $footerHasCarousel ? 'is-carousel' : 'is-static' }}" data-footer-gallery>

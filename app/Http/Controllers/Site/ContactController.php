@@ -3,52 +3,50 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\File;
-
 use App\Support\Images;
+use App\Support\SectionPaths;
+use Illuminate\Support\Facades\File;
 
 class ContactController extends Controller
 {
     public function index()
     {
-        $fallback = asset('assets/images/fallback.png');
+        $fallback = SectionPaths::fallbackUrl();
 
-        // hero images (как уже делали)
-        $dir = 'assets/components/sections/contact/sections/contact';
-        $images = Images::list($dir);
+        $heroImages = Images::list(
+            SectionPaths::dir('contact', 'hero')
+        );
 
-        // social links JSON
-        $socialLinksPath = public_path('assets/social-links.json');
+        // SOCIAL LINKS (JSON)
         $socialLinks = [];
+        $socialRelPath = config('site_sections.pages.contact.social_json');
+        $socialAbsPath = public_path($socialRelPath);
 
-        if (File::exists($socialLinksPath)) {
-            $json = File::get($socialLinksPath);
-            $decoded = json_decode($json, true);
-
-            if (is_array($decoded)) {
-                // нормализуем иконки -> полный url
-                $socialLinks = collect($decoded)->map(function ($item) {
-                    $label = $item['label'] ?? '';
-                    $url   = $item['url'] ?? '#';
-                    $icon  = $item['icon'] ?? null;
-
-                    $iconUrl = $icon ? asset('assets/icons/' . rawurlencode($icon)) : null;
-
-                    return [
-                        'label' => $label,
-                        'url'   => $url,
-                        'icon'  => $iconUrl,
-                    ];
-                })->all();
-            }
+        if (File::exists($socialAbsPath)) {
+            $socialLinks = json_decode(File::get($socialAbsPath), true) ?? [];
         }
+
+        // ✅ normalize icon urls (same logic as footer)
+        $iconsDir = trim(config('site_sections.ui.icons_dir', 'assets/icons'), '/');
+
+        $socialLinks = collect($socialLinks)
+            ->map(function ($item) use ($iconsDir) {
+                $icon = $item['icon'] ?? null;
+
+                $item['icon_url'] = $icon
+                    ? asset($iconsDir . '/' . basename($icon))
+                    : null;
+
+                return $item;
+            })
+            ->values()
+            ->all();
 
         return view('pages.contact', [
             'seoKey' => 'contact',
 
-            'contactHeroImages' => $images,
-            'contactHeroFirst' => $images[0] ?? $fallback,
+            'contactHeroImages'   => $heroImages,
+            'contactHeroFirst'    => $heroImages[0] ?? $fallback,
             'contactHeroFallback' => $fallback,
             'contactHeroInterval' => 5000,
 

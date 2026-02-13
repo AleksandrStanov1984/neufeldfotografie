@@ -5,10 +5,7 @@ namespace App\Support;
 class Seo
 {
     /**
-     * Build full title: "{page} – {site}"
-     * @param string $key
-     * @param string|null $fallback
-     * @return string
+     * Build full title: "{page} {sep} {site}"
      */
     public static function title(string $key, ?string $fallback = null): string
     {
@@ -17,7 +14,6 @@ class Seo
 
         $pageTitle = self::t("seo.$key.title", $fallback ?? $site);
 
-        // если title пустой/не найден → только site
         if (!$pageTitle || $pageTitle === $site) {
             return $site;
         }
@@ -32,7 +28,6 @@ class Seo
 
     public static function robots(string $key, ?string $fallback = null): string
     {
-        // page-level override; if none → global
         $val = self::t("seo.$key.robots", '');
         return $val ?: ($fallback ?? __('seo.global.robots'));
     }
@@ -44,12 +39,17 @@ class Seo
 
     public static function ogImage(string $key, ?string $fallback = null): string
     {
-        // page-level image; if none → fallback
         $img = self::t("seo.$key.og_image", '');
-        $img = $img ?: ($fallback ?? '/assets/og/default.jpg');
+        $img = $img ?: ($fallback ?? config('site_sections.seo.og_fallback', '/assets/og/default.jpg'));
 
-        // absolute url required for OG
+        // Absolute url required for OG
         return url($img);
+    }
+
+    public static function ogImageAlt(string $key, ?string $fallback = null): string
+    {
+        $alt = self::t("seo.$key.og_image_alt", '');
+        return $alt ?: ($fallback ?? __('seo.global.site_name'));
     }
 
     public static function twitterCard(?string $fallback = null): string
@@ -57,68 +57,84 @@ class Seo
         return self::t('seo.global.twitter_card', $fallback ?? 'summary_large_image');
     }
 
-    public static function canonical(): string
+    /**
+     * Canonical URL (по умолчанию без ?lang=, чтобы не плодить дубликаты).
+     */
+    public static function canonical(bool $keepLang = false): string
     {
-        return url()->current();
+        $url = url()->current();
+
+        if ($keepLang) {
+            $langKey = config('site_sections.locales.query_key', 'lang');
+            $lang = request()->query($langKey);
+
+            if ($lang) {
+                return $url . '?'.$langKey.'=' . urlencode($lang);
+            }
+        }
+
+        return $url;
+    }
+
+    /**
+     * hreflang URLs (у тебя язык через query параметр).
+     */
+    public static function hreflangs(): array
+    {
+        $locales   = config('site_sections.locales.available', ['de', 'en', 'ru']);
+        $fallback  = config('site_sections.locales.fallback', 'de');
+        $queryKey  = config('site_sections.locales.query_key', 'lang');
+
+        $base = url()->current();
+
+        $out = [];
+        foreach ($locales as $loc) {
+            $out[$loc] = $base . '?' . $queryKey . '=' . urlencode($loc);
+        }
+
+        $out['x-default'] = $out[$fallback] ?? $base;
+
+        return $out;
+    }
+
+    public static function ogLocale(): string
+    {
+        $map = config('site_sections.seo.og_locales_map', [
+            'de' => 'de_DE',
+            'en' => 'en_US',
+            'ru' => 'ru_RU',
+        ]);
+
+        $cur = app()->getLocale();
+
+        return $map[$cur] ?? 'en_US';
+    }
+
+    public static function ogAlternateLocales(): array
+    {
+        $map = config('site_sections.seo.og_locales_map', [
+            'de' => 'de_DE',
+            'en' => 'en_US',
+            'ru' => 'ru_RU',
+        ]);
+
+        $cur = app()->getLocale();
+        $curVal = $map[$cur] ?? null;
+
+        return array_values(array_filter($map, fn($v) => $v && $v !== $curVal));
     }
 
     private static function t(string $path, string $fallback): string
     {
         $val = __($path);
+
         // Laravel returns the key string if missing
-        if ($val === $path) return $fallback;
-        return trim((string)$val) ?: $fallback;
-    }
-
-public static function hreflangs(): array
-{
-    // Поддерживаемые локали
-    $locales = ['de', 'en', 'ru'];
-
-    $current = url()->current();
-
-    $out = [];
-    foreach ($locales as $loc) {
-        // Вариант 1 (идеально): если локаль в URL и есть Seo::localizedUrl($loc)
-        if (method_exists(static::class, 'localizedUrl')) {
-            $out[$loc] = static::localizedUrl($loc);
-        } else {
-            // Вариант 2 (пока): хотя бы на корень локали
-            $out[$loc] = url('/' . $loc);
+        if ($val === $path) {
+            return $fallback;
         }
+
+        $val = trim((string) $val);
+
+        return $val !== '' ? $val : $fallback;
     }
-
-    // x-default обычно на базовую версию (например de)
-    $out['x-default'] = $out['de'] ?? $current;
-
-    return $out;
-}
-
-public static function ogImageAlt(string $key = 'home'): string
-{
-    // можно хранить в lang/*/seo.php как og_image_alt
-    return __('seo.' . $key . '.og_image_alt', [], app()->getLocale())
-        ?: __('seo.global.site_name');
-}
-
-public static function ogLocale(): string
-{
-    // Facebook любит формат ll_CC (de_DE), но можно хотя бы так:
-    return match(app()->getLocale()) {
-        'de' => 'de_DE',
-        'en' => 'en_US',
-        'ru' => 'ru_RU',
-        default => 'en_US',
-    };
-}
-
-public static function ogAlternateLocales(): array
-{
-    $map = ['de' => 'de_DE', 'en' => 'en_US', 'ru' => 'ru_RU'];
-    $current = app()->getLocale();
-    return array_values(array_diff($map, [$map[$current] ?? null]));
-}
-
-
-
 }

@@ -4,23 +4,28 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Support\Images;
+use App\Support\SectionPaths;
 
 class NewbornController extends Controller
 {
     public function index()
     {
-        $fallback = asset('assets/images/fallback.png');
+        $fallback = SectionPaths::fallbackUrl();
 
         // HERO
-        $heroDir = 'assets/components/sections/newborn/hero';
-        $heroImages = Images::list($heroDir);
+        $heroImages = Images::list(
+            SectionPaths::dir('newborn', 'hero')
+        );
 
         // REASONS
-        $reasonsDir = 'assets/components/sections/newborn/reasons';
-        $reasonsImages = Images::list($reasonsDir);
+        $reasonsImages = Images::list(
+            SectionPaths::dir('newborn', 'reasons')
+        );
 
-        $galleryDir = 'assets/components/sections/newborn/gallery';
-        $galleryImages = Images::list($galleryDir);
+        // GALLERY
+        $galleryImages = Images::list(
+            SectionPaths::dir('newborn', 'gallery')
+        );
 
         return view('pages.newborn', [
             'seoKey' => 'newborn',
@@ -37,10 +42,11 @@ class NewbornController extends Controller
             'newbornReasonsFallback' => $fallback,
             'newbornReasonsInterval' => 5000,
 
+            // gallery
             'newbornGalleryImages'   => $galleryImages,
-            'newbornGalleryFirst'    => $reasonsImages[0] ?? $fallback,
+            'newbornGalleryFirst'    => $galleryImages[0] ?? $fallback,
             'newbornGalleryFallback' => $fallback,
-            'newbornReasonsInterval' => 5000,
+            'newbornGalleryInterval' => 5000,
         ]);
     }
 }

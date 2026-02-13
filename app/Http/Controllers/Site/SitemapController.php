@@ -10,39 +10,50 @@ class SitemapController extends Controller
 {
     public function index(): Response
     {
+        // locales берём из resources/lang/*
         $locales = collect(File::directories(lang_path()))
-            ->map(fn ($p) => basename($p))
+            ->map(fn($p) => basename($p))
             ->values()
             ->toArray();
 
-        // Только GET страницы (без contact.send и без _assets)
-        $routes = [
-            'home' => ['changefreq' => 'weekly', 'priority' => '1.0'],
-            'about' => ['changefreq' => 'monthly', 'priority' => '0.8'],
-            'gallery' => ['changefreq' => 'weekly', 'priority' => '0.9'],
-            'contact' => ['changefreq' => 'monthly', 'priority' => '0.7'],
-            'babybauch' => ['changefreq' => 'monthly', 'priority' => '0.8'],
-            'cake_smash' => ['changefreq' => 'monthly', 'priority' => '0.8'],
-            'price' => ['changefreq' => 'monthly', 'priority' => '0.8'],
-            'datenschutz' => ['changefreq' => 'yearly', 'priority' => '0.3'],
-            'impressum' => ['changefreq' => 'yearly', 'priority' => '0.3'],
-            'agb' => ['changefreq' => 'yearly', 'priority' => '0.3'],
-        ];
+        $routes = config('site_sections.sitemap.routes', []);
+        $gallerySlugs = config('site_sections.allowed_gallery_slugs', ['newborn', 'cake-smash', 'babybauch']);
 
         $urls = [];
         $today = now()->toDateString();
 
         foreach ($locales as $locale) {
-            foreach ($routes as $name => $meta) {
-                $loc = route($name);
-                $loc = $this->withLang($loc, $locale);
+            foreach ($routes as $item) {
 
-                $urls[] = [
-                    'loc' => $loc,
-                    'lastmod' => $today,
-                    'changefreq' => $meta['changefreq'],
-                    'priority' => $meta['priority'],
-                ];
+                // обычный route
+                if (($item['type'] ?? 'route') === 'route') {
+                    $loc = route($item['name']);
+                    $loc = $this->withLang($loc, $locale);
+
+                    $urls[] = [
+                        'loc' => $loc,
+                        'lastmod' => $today,
+                        'changefreq' => $item['changefreq'] ?? 'monthly',
+                        'priority' => $item['priority'] ?? '0.5',
+                    ];
+
+                    continue;
+                }
+
+                // gallery route with slug
+                if (($item['type'] ?? '') === 'gallery') {
+                    foreach ($gallerySlugs as $slug) {
+                        $loc = route($item['name'], ['slug' => $slug]);
+                        $loc = $this->withLang($loc, $locale);
+
+                        $urls[] = [
+                            'loc' => $loc,
+                            'lastmod' => $today,
+                            'changefreq' => $item['changefreq'] ?? 'weekly',
+                            'priority' => $item['priority'] ?? '0.9',
+                        ];
+                    }
+                }
             }
         }
 
@@ -53,7 +64,6 @@ class SitemapController extends Controller
 
     private function withLang(string $url, string $locale): string
     {
-        // Если вдруг url уже с query — аккуратно добавляем
         $sep = str_contains($url, '?') ? '&' : '?';
         return $url . $sep . 'lang=' . urlencode($locale);
     }

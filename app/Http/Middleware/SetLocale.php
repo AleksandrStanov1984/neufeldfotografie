@@ -5,24 +5,21 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\File;
 
 class SetLocale
 {
     public function handle(Request $request, Closure $next)
     {
-        $available = collect(File::directories(lang_path()))
-            ->map(fn ($path) => basename($path))
-            ->values()
-            ->toArray();
+        $available  = config('site_sections.locales.available', []);
+        $fallback   = config('site_sections.locales.fallback', config('app.locale', 'de'));
+        $queryKey   = config('site_sections.locales.query_key', 'lang');
+        $sessionKey = config('site_sections.locales.session_key', 'locale');
 
-        $fallback = config('app.locale');
+        // 1) priority: query
+        $fromQuery = $request->query($queryKey);
 
-        // 1) приоритет: query ?lang=
-        $fromQuery = $request->query('lang');
-
-        // 2) затем session
-        $fromSession = session('locale');
+        // 2) then session
+        $fromSession = session($sessionKey);
 
         $locale = $fromQuery ?: ($fromSession ?: $fallback);
 
@@ -30,9 +27,9 @@ class SetLocale
             $locale = $fallback;
         }
 
-        // если пришло из query и валидно — запоминаем в session
+        // если query валиден — сохраняем
         if ($fromQuery && $locale === $fromQuery) {
-            session(['locale' => $locale]);
+            session([$sessionKey => $locale]);
         }
 
         App::setLocale($locale);

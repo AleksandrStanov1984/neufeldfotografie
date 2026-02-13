@@ -3,28 +3,35 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\File;
-
 use App\Support\Images;
+use App\Support\SectionPaths;
+use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\View\Factory;
 
 class HomeController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+    public function index(): View|Factory
     {
-        $chapterDir = 'assets/components/sections/chapters';
-        $chapterImages = Images::list($chapterDir);
+        $fallback = SectionPaths::fallbackUrl();
 
-        $homeAboutDir = 'assets/components/sections/about';
-        $homeAboutImages = Images::list($homeAboutDir);
+        // HERO (left/right)
+        $leftImages = Images::list(SectionPaths::dir('home', 'hero_left'));
+        $rightImages = Images::list(SectionPaths::dir('home', 'hero_right'));
 
-        $storiesDir = 'assets/components/sections/stories';
-        $storiesImages = Images::list($storiesDir);
-        $fallback = asset('assets/images/fallback.png');
+        // HOME CHAPTERS
+        $chapterImages = Images::list(SectionPaths::dir('home', 'chapters'));
+
+        // HOME ABOUT
+        $homeAboutImages = Images::list(SectionPaths::dir('home', 'about'));
+
+        // STORIES / CTA
+        $storiesImages = Images::list(SectionPaths::dir('home', 'stories'));
 
         return view('pages.home', [
-            'leftImages'  => Images::list('assets/hero/left'),
-            'rightImages' => Images::list('assets/hero/right'),
+            'seoKey' => 'home',
+
+            'leftImages'  => $leftImages,
+            'rightImages' => $rightImages,
 
             // HOME CHAPTER
             'chapterImages'   => $chapterImages,
@@ -46,9 +53,9 @@ class HomeController extends Controller
             'ctaInterval' => 5000,
 
             'storiesLinks' => [
-               route('newborn'),
-               route('babybauch'),
-               route('cake_smash'),
+                route('newborn'),
+                route('babybauch'),
+                route('cake_smash'),
             ],
         ]);
     }

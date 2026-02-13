@@ -23,9 +23,12 @@
 
     {{-- REASONS --}}
     @include('sections.newborn.reasons', [
-        'tPrefix' => $tPrefix,
-        'image'   => $newbornReasonsFirst ?? null
+        'tPrefix'  => $tPrefix,
+        'images'   => $newbornReasonsImages ?? [],
+        'first'    => $newbornReasonsFirst ?? null,
+        'fallback' => $newbornReasonsFallback ?? null,
     ])
+
 
     {{-- GALLERY --}}
     @include('sections.newborn.gallery', [
